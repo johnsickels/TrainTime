@@ -29,3 +29,24 @@ $("#add-train").on("click", function(event) {
     $("#first-train-time-input").val("");
     $("#frequency-input").val("");
 });
+
+database.ref().on("child_added", function (childSnapshot) {
+    console.log(childSnapshot.val());
+    var trainName = childSnapshot.val().name;
+    var destination = childSnapshot.val().destination;
+    var firstTrainTime = childSnapshot.val().first;
+    var frequency = childSnapshot.val().frequency;
+
+    var nextArrival
+    var minutesAway
+
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(firstTrainTime),
+        $("<td>").text(frequency)
+
+    );
+
+    $("#train-table > tbody").append(newRow);
+});
