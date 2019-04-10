@@ -1,3 +1,7 @@
+body {
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+}
 .card {
     margin: 0 0 20px 0;
 }
